@@ -1,43 +1,56 @@
 
 import { useState } from 'react';
-import { Menu, X, Cross, Church, Calendar, Phone } from 'lucide-react';
+import { Menu, X, Cross, Calendar, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { name: 'Accueil', href: '#accueil' },
-    { name: 'Actualités', href: '#actualites' },
-    { name: 'Historique', href: '#historique' },
-    { name: 'Vatican News', href: '#vatican-news' },
+    { name: 'Accueil', href: '/' },
+    { name: 'Actualités', href: '/actualites' },
+    { name: 'Historique', href: '/#historique' },
+    { name: 'Vatican News', href: '/#vatican-news' },
   ];
+
+  const isActiveLink = (href: string) => {
+    if (href === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(href);
+  };
 
   return (
     <header className="bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-sacred rounded-full flex items-center justify-center">
-              <Cross className="w-6 h-6 text-sacred-foreground" />
-            </div>
+          <Link to="/" className="flex items-center space-x-3">
+            <img 
+              src="/lovable-uploads/c40889c9-fd40-4604-8a20-4b4d772dc3ed.png"
+              alt="Logo Paroisse Sainte Faustine"
+              className="w-10 h-10 rounded-full object-cover"
+            />
             <div className="flex flex-col">
               <h1 className="text-lg font-bold text-sacred">Paroisse Sainte Faustine</h1>
               <p className="text-xs text-muted-foreground hidden sm:block">Buturande</p>
             </div>
-          </div>
+          </Link>
 
           {/* Navigation Desktop */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
-                className="text-foreground hover:text-sacred transition-colors duration-300 text-sm font-medium"
+                to={item.href}
+                className={`text-foreground hover:text-sacred transition-colors duration-300 text-sm font-medium ${
+                  isActiveLink(item.href) ? 'text-sacred' : ''
+                }`}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -71,14 +84,16 @@ const Header = () => {
           <div className="lg:hidden py-4 border-t border-border">
             <nav className="flex flex-col space-y-3">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-sacred transition-colors px-2 py-1 rounded-md hover:bg-accent"
+                  to={item.href}
+                  className={`text-foreground hover:text-sacred transition-colors px-2 py-1 rounded-md hover:bg-accent ${
+                    isActiveLink(item.href) ? 'text-sacred' : ''
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
                 <Button variant="outline" size="sm" className="text-marian border-marian hover:bg-marian hover:text-marian-foreground">

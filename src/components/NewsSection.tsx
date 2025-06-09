@@ -2,6 +2,7 @@
 import { Calendar, User, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const NewsSection = () => {
   const news = [
@@ -90,10 +91,12 @@ const NewsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="border-divine text-divine hover:bg-divine hover:text-divine-foreground">
-            Voir toutes les actualités
-            <ChevronRight className="w-5 h-5 ml-2" />
-          </Button>
+          <Link to="/actualites">
+            <Button size="lg" variant="outline" className="border-divine text-divine hover:bg-divine hover:text-divine-foreground">
+              Voir toutes les actualités
+              <ChevronRight className="w-5 h-5 ml-2" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
