@@ -8,12 +8,9 @@ const Header = () => {
 
   const navItems = [
     { name: 'Accueil', href: '#accueil' },
-    { name: 'La Paroisse', href: '#paroisse' },
-    { name: 'Sacrements', href: '#sacrements' },
     { name: 'Actualités', href: '#actualites' },
-    { name: 'Médias', href: '#medias' },
-    { name: 'Communautés', href: '#communautes' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Historique', href: '#historique' },
+    { name: 'Vatican News', href: '#vatican-news' },
   ];
 
   return (
