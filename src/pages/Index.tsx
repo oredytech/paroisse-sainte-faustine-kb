@@ -2,10 +2,9 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import AboutSection from '@/components/AboutSection';
-import ServicesSection from '@/components/ServicesSection';
 import NewsSection from '@/components/NewsSection';
-import MediaSection from '@/components/MediaSection';
-import CommunitySection from '@/components/CommunitySection';
+import VaticanNewsSection from '@/components/VaticanNewsSection';
+import ServicesSection from '@/components/ServicesSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
@@ -15,10 +14,9 @@ const Index = () => {
       <Header />
       <Hero />
       <AboutSection />
-      <ServicesSection />
       <NewsSection />
-      <MediaSection />
-      <CommunitySection />
+      <VaticanNewsSection />
+      <ServicesSection />
       <ContactSection />
       <Footer />
     </div>
