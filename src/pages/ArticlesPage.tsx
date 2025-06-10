@@ -38,9 +38,12 @@ const ArticlesPage = () => {
   };
 
   const getFeaturedImageUrl = (post: any) => {
-    if (post._embedded?.['wp:featuredmedia']?.[0]) {
+    // Vérifier d'abord si l'image est dans les données embedded
+    if (post._embedded?.['wp:featuredmedia']?.[0]?.source_url) {
       return post._embedded['wp:featuredmedia'][0].source_url;
     }
+    
+    // Si pas d'image mise en avant, retourner une image par défaut
     return 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop';
   };
 
@@ -125,6 +128,11 @@ const ArticlesPage = () => {
                     src={getFeaturedImageUrl(post)}
                     alt={stripHtml(post.title.rendered)}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      // En cas d'erreur de chargement, utiliser l'image par défaut
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop';
+                    }}
                   />
                 </div>
                 <CardHeader className="pb-3">
