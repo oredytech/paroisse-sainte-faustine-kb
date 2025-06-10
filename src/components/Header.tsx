@@ -11,7 +11,7 @@ const Header = () => {
   const navItems = [
     { name: 'Accueil', href: '/' },
     { name: 'Actualités', href: '/actualites' },
-    { name: 'Historique', href: '/#historique' },
+    { name: 'Historique', href: '/historique' },
     { name: 'Vatican News', href: '/#vatican-news' },
   ];
 
