@@ -7,6 +7,7 @@ import NewsSection from '@/components/NewsSection';
 import MediaSection from '@/components/MediaSection';
 import CommunitySection from '@/components/CommunitySection';
 import ContactSection from '@/components/ContactSection';
+import HistoriqueSection from '@/components/HistoriqueSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
       <Header />
       <Hero />
       <AboutSection />
+      <HistoriqueSection />
       <ServicesSection />
       <NewsSection />
       <MediaSection />
