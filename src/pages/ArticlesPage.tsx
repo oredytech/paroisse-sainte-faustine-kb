@@ -7,16 +7,12 @@ import { Calendar, User, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import Layout from '@/components/Layout';
+import CategoriesDropdown from '@/components/CategoriesDropdown';
 
 const ArticlesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<number | undefined>(undefined);
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 9;
-
-  const { data: categories = [] } = useQuery({
-    queryKey: ['categories'],
-    queryFn: () => wordpressApi.getCategories(),
-  });
 
   const { data: posts = [], isLoading } = useQuery({
     queryKey: ['posts', currentPage, selectedCategory],
@@ -90,33 +86,15 @@ const ArticlesPage = () => {
         </div>
 
         <div className="container mx-auto px-4 py-12">
-          {/* Filtres par catégorie */}
-          <div className="mb-8">
-            <div className="flex flex-wrap gap-2 justify-center">
-              <Button
-                variant={selectedCategory === undefined ? "default" : "outline"}
-                onClick={() => {
-                  setSelectedCategory(undefined);
-                  setCurrentPage(1);
-                }}
-                className="mb-2"
-              >
-                Toutes les catégories
-              </Button>
-              {categories.map((category) => (
-                <Button
-                  key={category.id}
-                  variant={selectedCategory === category.id ? "default" : "outline"}
-                  onClick={() => {
-                    setSelectedCategory(category.id);
-                    setCurrentPage(1);
-                  }}
-                  className="mb-2"
-                >
-                  {category.name} ({category.count})
-                </Button>
-              ))}
-            </div>
+          {/* Filtre par catégorie avec dropdown */}
+          <div className="mb-8 flex justify-center">
+            <CategoriesDropdown
+              selectedCategory={selectedCategory}
+              onCategoryChange={(categoryId) => {
+                setSelectedCategory(categoryId);
+                setCurrentPage(1);
+              }}
+            />
           </div>
 
           {/* Grille d'articles */}

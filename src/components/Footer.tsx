@@ -1,5 +1,6 @@
 
-import { Cross, Facebook, MessageCircle, Youtube, MapPin, Phone, Mail, Heart } from 'lucide-react';
+import { Cross, Facebook, MessageCircle, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,9 +12,11 @@ const Footer = () => {
           {/* Logo et description */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-12 bg-sacred rounded-full flex items-center justify-center">
-                <Cross className="w-6 h-6 text-sacred-foreground" />
-              </div>
+              <img 
+                src="/lovable-uploads/c40889c9-fd40-4604-8a20-4b4d772dc3ed.png"
+                alt="Logo Paroisse Sainte Faustine"
+                className="w-12 h-12 rounded-full object-cover"
+              />
               <div>
                 <h3 className="text-xl font-bold">Paroisse Sainte Faustine</h3>
                 <p className="text-sm text-muted">Buturande</p>
@@ -40,11 +43,10 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Liens Rapides</h4>
             <ul className="space-y-2 text-muted">
-              <li><a href="#paroisse" className="hover:text-sacred transition-colors">Histoire</a></li>
-              <li><a href="#sacrements" className="hover:text-sacred transition-colors">Sacrements</a></li>
-              <li><a href="#actualites" className="hover:text-sacred transition-colors">Actualités</a></li>
-              <li><a href="#communautes" className="hover:text-sacred transition-colors">Communautés</a></li>
-              <li><a href="#medias" className="hover:text-sacred transition-colors">Médias</a></li>
+              <li><Link to="/" className="hover:text-sacred transition-colors">Accueil</Link></li>
+              <li><Link to="/actualites" className="hover:text-sacred transition-colors">Actualités</Link></li>
+              <li><Link to="/historique" className="hover:text-sacred transition-colors">Historique</Link></li>
+              <li><a href="/#vatican-news" className="hover:text-sacred transition-colors">Vatican News</a></li>
             </ul>
           </div>
 
@@ -72,34 +74,14 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Horaires des messes */}
-        <div className="border-t border-background/20 pt-8 mb-8">
-          <h4 className="text-lg font-semibold mb-4 text-center">Horaires des Messes</h4>
-          <div className="grid md:grid-cols-3 gap-6 text-center text-muted">
-            <div>
-              <h5 className="font-medium text-background mb-2">Dimanche</h5>
-              <p className="text-sm">7h00 • 10h00 • 17h00</p>
-            </div>
-            <div>
-              <h5 className="font-medium text-background mb-2">Semaine</h5>
-              <p className="text-sm">6h30 (Lun-Ven) • 18h00 (Mar/Jeu)</p>
-            </div>
-            <div>
-              <h5 className="font-medium text-background mb-2">Samedi</h5>
-              <p className="text-sm">6h30 • 18h00 (anticipée)</p>
-            </div>
-          </div>
-        </div>
-
         {/* Copyright */}
         <div className="border-t border-background/20 pt-8 text-center text-muted">
           <p className="flex items-center justify-center space-x-2">
             <span>&copy; {currentYear} Paroisse Sainte Faustine de Buturande.</span>
-            <span>Fait avec</span>
-            <Heart className="w-4 h-4 text-sacred" />
-            <span>pour la gloire de Dieu</span>
           </p>
-          <p className="text-sm mt-2">Diocèse de Butembo-Beni • République Démocratique du Congo</p>
+          <p className="text-sm mt-2">
+            Fièrement conçu par <a href="https://oredytech.com" target="_blank" rel="noopener noreferrer" className="text-sacred hover:text-sacred/80 transition-colors">Oredy TECHNOLOGIES</a>
+          </p>
         </div>
       </div>
     </footer>
