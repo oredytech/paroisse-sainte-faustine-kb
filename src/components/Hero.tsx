@@ -1,17 +1,53 @@
 
-import { Play, Calendar, MapPin } from 'lucide-react';
+import { Newspaper, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { wordpressApi } from '@/services/wordpressApi';
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const { data: posts } = useQuery({
+    queryKey: ['latestPosts'],
+    queryFn: () => wordpressApi.getPosts(1, 10),
+  });
+
+  const getFeaturedImageUrl = (post: any): string => {
+    if (post._embedded?.['wp:featuredmedia']?.[0]?.source_url) {
+      return post._embedded['wp:featuredmedia'][0].source_url;
+    }
+    return 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=2070';
+  };
+
+  const backgroundImages = posts?.map(post => getFeaturedImageUrl(post)) || [
+    'https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=2070'
+  ];
+
+  useEffect(() => {
+    if (backgroundImages.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [backgroundImages.length]);
+
   return (
     <section id="accueil" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Image de fond */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=2070')`
-        }}
-      />
+      {/* Images de fond défilantes */}
+      {backgroundImages.map((image, index) => (
+        <div 
+          key={index}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('${image}')`
+          }}
+        />
+      ))}
       
       {/* Contenu */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
@@ -30,29 +66,18 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="bg-sacred hover:bg-sacred/90 text-sacred-foreground px-8 py-3">
-              <Calendar className="w-5 h-5 mr-2" />
-              Horaires des Messes
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3">
-              <Play className="w-5 h-5 mr-2" />
-              Dernière Homélie
-            </Button>
-          </div>
-
-          {/* Prochaine messe */}
-          <div className="bg-background/90 backdrop-blur-sm rounded-lg p-6 max-w-md mx-auto">
-            <h3 className="text-foreground font-semibold mb-3">Prochaine Messe</h3>
-            <div className="flex items-center justify-between text-foreground">
-              <div className="flex items-center">
-                <Calendar className="w-4 h-4 mr-2 text-marian" />
-                <span className="text-sm">Dimanche 10h00</span>
-              </div>
-              <div className="flex items-center">
-                <MapPin className="w-4 h-4 mr-2 text-earth" />
-                <span className="text-sm">Église Principale</span>
-              </div>
-            </div>
+            <Link to="/actualites">
+              <Button size="lg" className="bg-sacred hover:bg-sacred/90 text-sacred-foreground px-8 py-3">
+                <Newspaper className="w-5 h-5 mr-2" />
+                Actualités
+              </Button>
+            </Link>
+            <Link to="/historique">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3">
+                <BookOpen className="w-5 h-5 mr-2" />
+                Historique
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

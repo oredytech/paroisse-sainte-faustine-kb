@@ -56,10 +56,6 @@ const Header = () => {
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="text-marian border-marian hover:bg-marian hover:text-marian-foreground">
-              <Calendar className="w-4 h-4 mr-2" />
-              Messes
-            </Button>
             <ThemeToggle />
             <Link to="/contact">
               <Button size="sm" className="bg-sacred hover:bg-sacred/90 text-sacred-foreground">
@@ -99,10 +95,6 @@ const Header = () => {
                 </Link>
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                <Button variant="outline" size="sm" className="text-marian border-marian hover:bg-marian hover:text-marian-foreground">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Messes
-                </Button>
                 <ThemeToggle />
                 <Link to="/contact">
                   <Button size="sm" className="bg-sacred hover:bg-sacred/90 text-sacred-foreground">
