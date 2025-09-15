@@ -57,18 +57,22 @@ const Footer = () => {
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 mt-1 text-sacred" />
                 <div className="text-sm">
-                  <p>Avenue de la Paix</p>
-                  <p>Buturande, Butembo</p>
-                  <p>Nord-Kivu, RDC</p>
+                  <p>Avenue MWANGAZA, Quartier de BUTURANDE N° 001</p>
+                  <p>Territoire de Rutshuru, Province du Nord-Kivu</p>
+                  <p>République Démocratique du Congo</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-sacred" />
-                <span className="text-sm">+243 XXX XXX XXX</span>
+                <span className="text-sm">+243 970 929 807</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Phone className="w-4 h-4 text-sacred" />
+                <span className="text-sm">+243 993 770 719</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-sacred" />
-                <span className="text-sm">contact@paroissesteaustine.cd</span>
+                <span className="text-sm">contact@saintefaustinekb.org</span>
               </div>
             </div>
           </div>

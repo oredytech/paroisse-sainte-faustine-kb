@@ -10,32 +10,27 @@ const ContactSection = () => {
     {
       name: "Église Principale",
       location: "Buturande Centre",
-      responsable: "Père Jean-Baptiste KASINDI",
-      contact: "+243 XXX XXX XXX"
+      responsable: "Père Jean-Baptiste KASINDI"
     },
     {
       name: "Succursale Notre-Dame",
       location: "Quartier Matonge",
-      responsable: "Père Michel MUHINDO",
-      contact: "+243 XXX XXX XXX"
+      responsable: "Père Michel MUHINDO"
     },
     {
       name: "Succursale Saint-Joseph",
       location: "Quartier Kimisagara",
-      responsable: "Père Emmanuel KAMBALE",
-      contact: "+243 XXX XXX XXX"
+      responsable: "Père Emmanuel KAMBALE"
     },
     {
       name: "Succursale Sainte-Thérèse",
       location: "Quartier Bujovu",
-      responsable: "Père Augustin PALUKU",
-      contact: "+243 XXX XXX XXX"
+      responsable: "Père Augustin PALUKU"
     },
     {
       name: "Succursale Saint-Charles",
       location: "Quartier Muhongozi",
-      responsable: "Père Dieudonné MBUSA",
-      contact: "+243 XXX XXX XXX"
+      responsable: "Père Dieudonné MBUSA"
     }
   ];
 
@@ -65,8 +60,8 @@ const ContactSection = () => {
               <CardContent>
                 <p className="text-muted-foreground">
                   Paroisse Sainte Faustine<br />
-                  Avenue de la Paix, Buturande<br />
-                  Butembo, Nord-Kivu<br />
+                  Avenue MWANGAZA, Quartier de BUTURANDE N° 001<br />
+                  Territoire de Rutshuru, Province du Nord-Kivu<br />
                   République Démocratique du Congo
                 </p>
               </CardContent>
@@ -101,15 +96,19 @@ const ContactSection = () => {
               <CardContent className="space-y-3">
                 <div className="flex items-center">
                   <Phone className="w-4 h-4 mr-2 text-muted-foreground" />
-                  <span className="text-muted-foreground">+243 XXX XXX XXX</span>
+                  <span className="text-muted-foreground">+243 970 929 807</span>
+                </div>
+                <div className="flex items-center">
+                  <Phone className="w-4 h-4 mr-2 text-muted-foreground" />
+                  <span className="text-muted-foreground">+243 993 770 719</span>
                 </div>
                 <div className="flex items-center">
                   <Mail className="w-4 h-4 mr-2 text-muted-foreground" />
-                  <span className="text-muted-foreground">contact@paroissesteaustine.cd</span>
+                  <span className="text-muted-foreground">contact@saintefaustinekb.org</span>
                 </div>
                 <div className="flex items-center">
                   <MessageCircle className="w-4 h-4 mr-2 text-muted-foreground" />
-                  <span className="text-muted-foreground">WhatsApp: +243 XXX XXX XXX</span>
+                  <span className="text-muted-foreground">WhatsApp: +243 970 929 807</span>
                 </div>
                 <div className="flex items-center">
                   <Facebook className="w-4 h-4 mr-2 text-muted-foreground" />
@@ -164,8 +163,7 @@ const ContactSection = () => {
                 <CardContent className="p-6">
                   <h4 className="font-bold text-foreground mb-2">{succursale.name}</h4>
                   <p className="text-muted-foreground text-sm mb-2">{succursale.location}</p>
-                  <p className="text-earth font-medium text-sm mb-2">{succursale.responsable}</p>
-                  <p className="text-muted-foreground text-sm">{succursale.contact}</p>
+                  <p className="text-earth font-medium text-sm">{succursale.responsable}</p>
                 </CardContent>
               </Card>
             ))}
