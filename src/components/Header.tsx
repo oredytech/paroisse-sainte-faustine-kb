@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Menu, X, Cross, Calendar, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,6 @@ const Header = () => {
     { name: 'Accueil', href: '/' },
     { name: 'Actualités', href: '/actualites' },
     { name: 'Historique', href: '/historique' },
-    { name: 'Vatican News', href: '/#vatican-news' },
   ];
 
   const isActiveLink = (href: string) => {
@@ -60,10 +60,13 @@ const Header = () => {
               <Calendar className="w-4 h-4 mr-2" />
               Messes
             </Button>
-            <Button size="sm" className="bg-sacred hover:bg-sacred/90 text-sacred-foreground">
-              <Phone className="w-4 h-4 mr-2" />
-              Contact
-            </Button>
+            <ThemeToggle />
+            <Link to="/contact">
+              <Button size="sm" className="bg-sacred hover:bg-sacred/90 text-sacred-foreground">
+                <Phone className="w-4 h-4 mr-2" />
+                Contact
+              </Button>
+            </Link>
           </div>
 
           {/* Menu Mobile */}
@@ -100,10 +103,13 @@ const Header = () => {
                   <Calendar className="w-4 h-4 mr-2" />
                   Messes
                 </Button>
-                <Button size="sm" className="bg-sacred hover:bg-sacred/90 text-sacred-foreground">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Contact
-                </Button>
+                <ThemeToggle />
+                <Link to="/contact">
+                  <Button size="sm" className="bg-sacred hover:bg-sacred/90 text-sacred-foreground">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Contact
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>

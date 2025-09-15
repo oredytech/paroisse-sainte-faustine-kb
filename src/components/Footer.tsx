@@ -46,7 +46,7 @@ const Footer = () => {
               <li><Link to="/" className="hover:text-sacred transition-colors">Accueil</Link></li>
               <li><Link to="/actualites" className="hover:text-sacred transition-colors">Actualités</Link></li>
               <li><Link to="/historique" className="hover:text-sacred transition-colors">Historique</Link></li>
-              <li><a href="/#vatican-news" className="hover:text-sacred transition-colors">Vatican News</a></li>
+              <li><Link to="/contact" className="hover:text-sacred transition-colors">Contact</Link></li>
             </ul>
           </div>
 
