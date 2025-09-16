@@ -8,7 +8,9 @@ interface SocialShareProps {
 }
 
 const SocialShare = ({ url, title }: SocialShareProps) => {
-  const encodedUrl = encodeURIComponent(url);
+  // Utiliser le domaine personnalisé au lieu du domaine actuel
+  const fullUrl = url.startsWith('http') ? url : `https://saintefaustinekb.org${url}`;
+  const encodedUrl = encodeURIComponent(fullUrl);
   const encodedTitle = encodeURIComponent(title);
 
   const shareLinks = [
