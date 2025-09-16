@@ -27,13 +27,13 @@ const Footer = () => {
               et accompagne chaque fidèle dans son cheminement spirituel.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-sacred transition-colors">
+              <a href="https://www.facebook.com/infosgowera" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-sacred transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-sacred transition-colors">
+              <a href="https://wa.me/243970929807" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-sacred transition-colors">
                 <MessageCircle className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-sacred transition-colors">
+              <a href="https://youtube.com/@saintefaustinekb" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-sacred transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>

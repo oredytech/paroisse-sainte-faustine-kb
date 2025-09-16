@@ -158,7 +158,7 @@ const ArticlePage = () => {
                     <div className="flex items-center justify-between">
                       <h3 className="text-lg font-semibold text-foreground">Partager cet article</h3>
                       <SocialShare 
-                        url={window.location.href}
+                        url={`/article/${post.slug}`}
                         title={stripHtml(post.title.rendered)}
                       />
                     </div>
