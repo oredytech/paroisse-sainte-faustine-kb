@@ -66,7 +66,7 @@ const Hero = () => {
               </Button>
             </Link>
             <Link to="/historique">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3">
+              <Button size="lg" variant="outline" className="border-white/80 text-white hover:bg-white hover:text-foreground px-8 py-3 backdrop-blur-sm">
                 <BookOpen className="w-5 h-5 mr-2" />
                 Historique
               </Button>
