@@ -21,9 +21,16 @@ const Hero = () => {
     return 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=2070';
   };
 
-  const backgroundImages = posts?.map(post => getFeaturedImageUrl(post)) || [
-    'https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=2070'
+  // Images par défaut de la paroisse en attendant le chargement des articles
+  const defaultImages = [
+    '/paroisse-images/ceremonie-1.jpg',
+    '/paroisse-images/ceremonie-2.jpg',
+    '/paroisse-images/batiment-paroisse.jpg',
+    '/paroisse-images/celebration-exterieure.jpg',
+    '/paroisse-images/nouveau-batiment.jpg'
   ];
+
+  const backgroundImages = posts?.map(post => getFeaturedImageUrl(post)) || defaultImages;
 
   useEffect(() => {
     if (backgroundImages.length > 1) {
