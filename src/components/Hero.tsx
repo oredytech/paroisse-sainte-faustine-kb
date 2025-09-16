@@ -9,28 +9,14 @@ import { useEffect, useState } from 'react';
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  const { data: posts } = useQuery({
-    queryKey: ['latestPosts'],
-    queryFn: () => wordpressApi.getPosts(1, 10),
-  });
-
-  const getFeaturedImageUrl = (post: any): string => {
-    if (post._embedded?.['wp:featuredmedia']?.[0]?.source_url) {
-      return post._embedded['wp:featuredmedia'][0].source_url;
-    }
-    return 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?q=80&w=2070';
-  };
-
-  // Images par défaut de la paroisse en attendant le chargement des articles
-  const defaultImages = [
+  // Images par défaut de la paroisse uniquement
+  const backgroundImages = [
     '/paroisse-images/ceremonie-1.jpg',
     '/paroisse-images/ceremonie-2.jpg',
     '/paroisse-images/batiment-paroisse.jpg',
     '/paroisse-images/celebration-exterieure.jpg',
     '/paroisse-images/nouveau-batiment.jpg'
   ];
-
-  const backgroundImages = posts?.map(post => getFeaturedImageUrl(post)) || defaultImages;
 
   useEffect(() => {
     if (backgroundImages.length > 1) {

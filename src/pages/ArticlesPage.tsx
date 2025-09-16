@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { wordpressApi } from '@/services/wordpressApi';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,11 +12,18 @@ import CategoriesDropdown from '@/components/CategoriesDropdown';
 const ArticlesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<number | undefined>(undefined);
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const perPage = 9;
 
   const { data: posts = [], isLoading } = useQuery({
     queryKey: ['posts', currentPage, selectedCategory],
     queryFn: () => wordpressApi.getPosts(currentPage, perPage, selectedCategory),
+  });
+
+  // Récupérer les 5 derniers articles pour le slider
+  const { data: latestPosts } = useQuery({
+    queryKey: ['latestPostsSlider'],
+    queryFn: () => wordpressApi.getPosts(1, 5),
   });
 
   const stripHtml = (html: string) => {
@@ -57,6 +64,18 @@ const ArticlesPage = () => {
     return 'Non catégorisé';
   };
 
+  // Gérer le slider d'images des articles
+  const backgroundImages = latestPosts?.map(post => getFeaturedImageUrl(post)) || [];
+
+  useEffect(() => {
+    if (backgroundImages.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [backgroundImages.length]);
+
   if (isLoading) {
     return (
       <Layout>
@@ -73,9 +92,22 @@ const ArticlesPage = () => {
   return (
     <Layout>
       <div className="min-h-screen bg-background">
-        {/* Header */}
-        <div className="bg-gradient-to-br from-sacred/10 to-divine/10 py-16">
-          <div className="container mx-auto px-4 text-center">
+        {/* Header avec slider d'images */}
+        <div className="relative bg-gradient-to-br from-sacred/10 to-divine/10 py-16 overflow-hidden">
+          {/* Images de fond défilantes */}
+          {backgroundImages.length > 0 && backgroundImages.map((image, index) => (
+            <div 
+              key={index}
+              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+                index === currentImageIndex ? 'opacity-20' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `url('${image}')`
+              }}
+            />
+          ))}
+          
+          <div className="relative z-10 container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Actualités de la <span className="text-sacred">Paroisse</span>
             </h1>
