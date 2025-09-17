@@ -31,9 +31,6 @@ const App = () => (
             {/* Redirections pour les anciennes URLs */}
             <Route path="/accueil" element={<Navigate to="/" replace />} />
             
-            {/* Redirections pour les liens WordPress */}
-            <Route path="/:oldSlug" element={<Navigate to="/actualites" replace />} />
-            
             {/* Route 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
