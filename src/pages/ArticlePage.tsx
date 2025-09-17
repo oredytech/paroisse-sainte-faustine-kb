@@ -100,9 +100,9 @@ const ArticlePage = () => {
   return (
     <Layout>
       <div className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8 max-w-7xl">
           {/* Bouton retour */}
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <Link to="/actualites">
               <Button variant="outline" size="sm">
                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -111,9 +111,9 @@ const ArticlePage = () => {
             </Link>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-4 sm:gap-8">
             {/* Contenu principal */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 min-w-0">
               <article className="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
                 {/* Image mise en avant */}
                 {featuredImage && (
@@ -126,53 +126,58 @@ const ArticlePage = () => {
                   </div>
                 )}
 
-                <div className="p-6 md:p-8">
+                <div className="p-3 sm:p-6 md:p-8">
                   {/* Métadonnées */}
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                    <span className="bg-sacred/10 text-sacred px-3 py-1 rounded-full font-medium">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm text-muted-foreground mb-4">
+                    <span className="bg-sacred/10 text-sacred px-2 sm:px-3 py-1 rounded-full font-medium text-xs sm:text-sm">
                       {getCategoryName(post)}
                     </span>
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {formatDate(post.date)}
+                    <div className="flex items-center text-xs sm:text-sm">
+                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                      <span className="hidden sm:inline">{formatDate(post.date)}</span>
+                      <span className="sm:hidden">{new Date(post.date).toLocaleDateString('fr-FR')}</span>
                     </div>
-                    <div className="flex items-center">
-                      <User className="w-4 h-4 mr-1" />
+                    <div className="flex items-center text-xs sm:text-sm">
+                      <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                       {getAuthorName(post)}
                     </div>
                   </div>
 
                   {/* Titre */}
-                  <h1 className="text-3xl md:text-4xl font-bold mb-6 text-foreground leading-tight">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-foreground leading-tight break-words">
                     {stripHtml(post.title.rendered)}
                   </h1>
 
                   {/* Contenu */}
                   <div 
-                    className="prose prose-lg max-w-none text-foreground mb-8"
+                    className="prose prose-sm sm:prose-base lg:prose-lg max-w-none text-foreground mb-6 sm:mb-8 overflow-hidden break-words"
                     dangerouslySetInnerHTML={{ __html: post.content.rendered }}
                   />
 
                   {/* Boutons de partage */}
-                  <div className="border-t border-border pt-6 mb-6">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-foreground">Partager cet article</h3>
-                      <SocialShare 
-                        url={`/article/${post.slug}`}
-                        title={stripHtml(post.title.rendered)}
-                      />
+                  <div className="border-t border-border pt-4 sm:pt-6 mb-4 sm:mb-6">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                      <h3 className="text-base sm:text-lg font-semibold text-foreground">Partager cet article</h3>
+                      <div className="overflow-x-auto w-full sm:w-auto">
+                        <SocialShare 
+                          url={`/article/${post.slug}`}
+                          title={stripHtml(post.title.rendered)}
+                        />
+                      </div>
                     </div>
                   </div>
 
                   {/* Section commentaires */}
-                  <div className="border-t border-border pt-6">
-                    <div className="flex items-center justify-between mb-6">
-                      <h3 className="text-xl font-semibold text-foreground">
+                  <div className="border-t border-border pt-4 sm:pt-6">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-3">
+                      <h3 className="text-lg sm:text-xl font-semibold text-foreground">
                         Commentaires ({comments.length})
                       </h3>
                       <Button 
                         onClick={() => setShowCommentForm(!showCommentForm)}
                         variant="outline"
+                        size="sm"
+                        className="w-full sm:w-auto"
                       >
                         <MessageCircle className="w-4 h-4 mr-2" />
                         Laisser un commentaire
@@ -181,7 +186,7 @@ const ArticlePage = () => {
 
                     {/* Formulaire de commentaire */}
                     {showCommentForm && (
-                      <div className="mb-8">
+                      <div className="mb-6 sm:mb-8">
                         <CommentForm 
                           postId={post.id}
                           onSuccess={() => {
@@ -194,22 +199,22 @@ const ArticlePage = () => {
                     )}
 
                     {/* Liste des commentaires */}
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       {comments.map((comment) => (
-                        <div key={comment.id} className="bg-muted/30 rounded-lg p-4">
-                          <div className="flex items-center gap-3 mb-3">
+                        <div key={comment.id} className="bg-muted/30 rounded-lg p-3 sm:p-4 break-words">
+                          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                             <img 
                               src={comment.author_avatar_urls?.['48'] || '/placeholder.svg'}
                               alt={comment.author_name}
-                              className="w-8 h-8 rounded-full"
+                              className="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex-shrink-0"
                             />
-                            <div>
-                              <p className="font-semibold text-foreground">{comment.author_name}</p>
-                              <p className="text-sm text-muted-foreground">{formatDate(comment.date)}</p>
+                            <div className="min-w-0 flex-1">
+                              <p className="font-semibold text-foreground text-sm sm:text-base truncate">{comment.author_name}</p>
+                              <p className="text-xs sm:text-sm text-muted-foreground">{formatDate(comment.date)}</p>
                             </div>
                           </div>
                           <div 
-                            className="text-foreground"
+                            className="text-foreground text-sm sm:text-base break-words overflow-wrap-anywhere"
                             dangerouslySetInnerHTML={{ __html: comment.content.rendered }}
                           />
                         </div>
@@ -221,7 +226,7 @@ const ArticlePage = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 min-w-0">
               <ArticleSidebar 
                 currentPostId={post.id}
                 categoryIds={post.categories}
