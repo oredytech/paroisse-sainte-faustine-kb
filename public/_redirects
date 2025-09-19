@@ -1,0 +1,5 @@
+/*
+  Netlify SPA fallback to ensure client-side routing works on deep links
+  Example: /article/:slug opens the React route instead of Netlify 404
+*/
+/* /index.html 200
