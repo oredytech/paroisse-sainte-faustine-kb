@@ -8,29 +8,24 @@ import { Textarea } from '@/components/ui/textarea';
 const ContactSection = () => {
   const succursales = [
     {
-      name: "Église Principale",
-      location: "Buturande Centre",
-      responsable: "Père Jean-Baptiste KASINDI"
+      name: "Buturande",
+      location: "à Kiwanja"
     },
     {
-      name: "Succursale Notre-Dame",
-      location: "Quartier Matonge",
-      responsable: "Père Michel MUHINDO"
+      name: "Kibututu",
+      location: "à Katoro"
     },
     {
-      name: "Succursale Saint-Joseph",
-      location: "Quartier Kimisagara",
-      responsable: "Père Emmanuel KAMBALE"
+      name: "Ruhura",
+      location: "à Kinyandoyi"
     },
     {
-      name: "Succursale Sainte-Thérèse",
-      location: "Quartier Bujovu",
-      responsable: "Père Augustin PALUKU"
+      name: "Kahunga",
+      location: "à kahunga"
     },
     {
-      name: "Succursale Saint-Charles",
-      location: "Quartier Muhongozi",
-      responsable: "Père Dieudonné MBUSA"
+      name: "Punga-Nyundo",
+      location: "à Nyundo dans le Busanza"
     }
   ];
 
@@ -162,8 +157,7 @@ const ContactSection = () => {
               <Card key={index} className="hover:shadow-lg transition-shadow border-border/50">
                 <CardContent className="p-6">
                   <h4 className="font-bold text-foreground mb-2">{succursale.name}</h4>
-                  <p className="text-muted-foreground text-sm mb-2">{succursale.location}</p>
-                  <p className="text-earth font-medium text-sm">{succursale.responsable}</p>
+                  <p className="text-muted-foreground text-sm">{succursale.location}</p>
                 </CardContent>
               </Card>
             ))}
