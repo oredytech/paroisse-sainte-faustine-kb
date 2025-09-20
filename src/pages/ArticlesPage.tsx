@@ -168,7 +168,7 @@ const ArticlesPage = () => {
                       <User className="w-4 h-4 mr-1" />
                       {getAuthorName(post)}
                     </div>
-                    <Link to={`/article/${post.slug}`}>
+                    <Link to={`/${post.slug}`}>
                       <Button variant="ghost" size="sm" className="text-sacred hover:text-sacred/80">
                         Lire la suite
                         <ChevronRight className="w-4 h-4 ml-1" />

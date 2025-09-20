@@ -160,7 +160,7 @@ const ArticlePage = () => {
                       <h3 className="text-base sm:text-lg font-semibold text-foreground">Partager cet article</h3>
                       <div className="overflow-x-auto w-full sm:w-auto">
                         <SocialShare 
-                          url={`/article/${post.slug}`}
+                          url={`/${post.slug}`}
                           title={stripHtml(post.title.rendered)}
                         />
                       </div>

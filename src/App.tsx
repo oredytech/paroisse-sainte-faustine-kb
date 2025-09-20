@@ -24,9 +24,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/actualites" element={<ArticlesPage />} />
-            <Route path="/article/:slug" element={<ArticlePage />} />
             <Route path="/historique" element={<HistoriquePage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/:slug" element={<ArticlePage />} />
             
             {/* Redirections pour les anciennes URLs */}
             <Route path="/accueil" element={<Navigate to="/" replace />} />

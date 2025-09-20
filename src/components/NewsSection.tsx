@@ -117,7 +117,7 @@ const NewsSection = () => {
                     <User className="w-4 h-4 mr-1" />
                     {getAuthorName(post)}
                   </div>
-                  <Link to={`/article/${post.slug}`}>
+                  <Link to={`/${post.slug}`}>
                     <Button variant="ghost" size="sm" className="text-divine hover:text-divine/80">
                       Lire plus
                       <ChevronRight className="w-4 h-4 ml-1" />

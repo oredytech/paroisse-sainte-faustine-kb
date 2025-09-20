@@ -77,7 +77,7 @@ const ArticleSidebar = ({ currentPostId, categoryIds }: ArticleSidebarProps) => 
                   className="w-16 h-16 rounded object-cover flex-shrink-0"
                 />
                 <div className="flex-1 min-w-0">
-                  <Link to={`/article/${post.slug}`}>
+                  <Link to={`/${post.slug}`}>
                     <h4 className="font-medium text-sm text-foreground hover:text-sacred transition-colors line-clamp-2 mb-1">
                       {stripHtml(post.title.rendered)}
                     </h4>
